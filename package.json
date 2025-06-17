@@ -18,6 +18,9 @@
   "author": "https://github.com/nhsuk/",
   "license": "MIT",
   "dependencies": {
+
+    "octokit": "^5.0.3",
+
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.27.2",
     "body-parser": "^2.2.0",

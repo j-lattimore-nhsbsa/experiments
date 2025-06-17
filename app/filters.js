@@ -1,37 +1,31 @@
 module.exports = function (env) { /* eslint-disable-line func-names,no-unused-vars */
   const filters = {};
 
-  /* ------------------------------------------------------------------
-    add your methods to the filters obj below this comment block:
-    @example:
+  //
+  // GET PROTOTYPE ROWS FILTER
+  //
+  filters.getPrototypeRows = function( prototypes, type ){
 
-    filters.sayHi = function(name) {
-        return 'Hi ' + name + '!'
+    type = ( type && ['nhsuk','govuk'].indexOf( type ) > -1 ) ? type : 'nhsuk';
+
+    const rows = [];
+
+    if( prototypes instanceof Object ){
+      prototypes[type].forEach( function( row ){
+        rows.push([
+          {
+            text: row.name
+          },
+          {
+            text: row.version
+          }
+        ]);
+      });
     }
 
-    Which in your templates would be used as:
+    return rows;
 
-    {{ 'Paul' | sayHi }} => 'Hi Paul'
+  };
 
-    Notice the first argument of your filters method is whatever
-    gets 'piped' via '|' to the filter.
-
-    Filters can take additional arguments, for example:
-
-    filters.sayHi = function(name,tone) {
-      return (tone == 'formal' ? 'Greetings' : 'Hi') + ' ' + name + '!'
-    }
-
-    Which would be used like this:
-
-    {{ 'Joel' | sayHi('formal') }} => 'Greetings Joel!'
-    {{ 'Gemma' | sayHi }} => 'Hi Gemma!'
-
-    For more on filters and how to write them see the Nunjucks
-    documentation.
-
-  ------------------------------------------------------------------ */
-
-  /* keep the following line to return your filters to the app  */
   return filters;
 };

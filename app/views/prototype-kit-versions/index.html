@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+<!-- Set the page title -->
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+<!-- For adding a breadcrumb or back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs and https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block beforeContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+
+
+      <h1 class="nhsuk-heading-l">Prototype kit versions</h1>
+
+      {{ table({
+        panel: false,
+        caption: 'Projects in the NHS BSA toolkit',
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: 'Project'
+          },
+          {
+            text: 'Version'
+          }
+        ],
+        rows: prototypes | getPrototypeRows('nhsuk')
+      }) }}
+     
+     
+
+    </div>
+  </div>
+{% endblock %}
